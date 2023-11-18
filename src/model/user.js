@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-
 class User 
 {
     constructor(id, name, email, password)
