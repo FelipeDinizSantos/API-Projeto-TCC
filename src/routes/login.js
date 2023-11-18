@@ -22,7 +22,8 @@ router.post('/', async(req, res) =>
             res.json({user: user, token: token});
         }
         else throw new Error('Erro durante a autenticação, tente novamente!');
-    } catch (error) 
+    }
+    catch (error) 
     {
         res.status(500).json({ error: error.message });
     }
