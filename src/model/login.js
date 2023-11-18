@@ -12,18 +12,18 @@ async function login(user)
 
         if(queryResults.length == 0)
         {
-            return {resultado: 'Email ou Senha Incorretos!'};
+            return new Error('Email ou Senha Incorretos!');
         }
         const password = queryResults[0].senha;
 
         const samePassWord = await isSamePassWord(userProvided.password, password);
         if(samePassWord)
         {
-            return {resultado: 'Validação Concluida!'};
+            return {same: samePassWord};
         }
         else
         {
-            return {resultado: 'Email ou Senha Incorretos!'};
+            return new Error('Email ou Senha Incorretos!');
         }
     } 
     catch (error) 

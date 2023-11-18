@@ -2,6 +2,9 @@ const express = require('express');
 const User = require('../model/user');
 const login = require('../model/login');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const ourSecret = process.env.JWT_TOKEN;
 
 router.post('/', async(req, res) =>
 {
@@ -10,12 +13,16 @@ router.post('/', async(req, res) =>
      
     try 
     {
-        const results = await login(user);
-        res.status(200).json({ resultado: results });
-
+        const result = await login(user);
+        if(result.same === true)
+        {
+            const token = jwt.sign({email}, ourSecret, { expiresIn: '1d' });
+            res.json({user: user, token: token});
+        }
+        else throw new Error('Erro durante a autenticação, tente novamente!');
     } catch (error) 
     {
-        res.status(404).json({ error: err.message });
+        res.status(500).json({ error: error.message });
     }
 })
 
