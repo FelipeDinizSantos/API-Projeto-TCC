@@ -10,15 +10,22 @@ async function registerUser(newUser) {
         let hashedPassword = await getHashedPassword(user.password);
         user.password = hashedPassword;
 
-        await connection.query('INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)', 
-            [user.name, user.email, user.password]
+        const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', 
+            [user.email]
         );
 
-        return {resultado: 'Registro Realizado!'}; 
+        if(queryResults.length == 0)
+        {
+            await connection.query('INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)', 
+                [user.name, user.email, user.password]
+            );
+            return {resultado: 'Registro Realizado!'};
+        }
+        else throw new Error('Email Já Registrado!');
     } 
-    catch (err) 
+    catch (error) 
     {
-        return { error: 'Houve um erro ao criar o usuário: ' + err.message };
+        return { error: error.message };
     }
 }
 
