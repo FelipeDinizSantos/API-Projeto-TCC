@@ -1,0 +1,35 @@
+{
+  "name": "api-tcc",
+  "version": "1.0.0",
+  "description": "API para ser consumida pela aplicação web de nosso TCC",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeDinizSantos/API-projeto-tcc.git"
+  },
+  "keywords": [
+    "estudo",
+    "api",
+    "nodeJS",
+    "tcc",
+    "ads"
+  ],
+  "author": "Felipe Diniz dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelipeDinizSantos/API-projeto-tcc/issues"
+  },
+  "homepage": "https://github.com/FelipeDinizSantos/API-projeto-tcc#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
