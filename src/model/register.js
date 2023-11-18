@@ -10,11 +10,11 @@ async function registerUser(newUser) {
         let hashedPassword = await getHashedPassword(user.password);
         user.password = hashedPassword;
 
-        const [results] = await connection.query('INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)', 
+        await connection.query('INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)', 
             [user.name, user.email, user.password]
         );
 
-        return results; 
+        return {resultado: 'Registro Realizado!'}; 
     } 
     catch (err) 
     {
