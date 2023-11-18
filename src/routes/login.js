@@ -2,6 +2,8 @@ const express = require('express');
 const User = require('../model/user');
 const login = require('../model/login');
 const router = express.Router();
+
+//token
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const ourSecret = process.env.JWT_TOKEN;
@@ -14,7 +16,7 @@ router.post('/', async(req, res) =>
     try 
     {
         const result = await login(user);
-        if(result.same === true)
+        if(result.isSamePassWord === true)
         {
             const token = jwt.sign({email}, ourSecret, { expiresIn: '1d' });
             res.json({user: user, token: token});

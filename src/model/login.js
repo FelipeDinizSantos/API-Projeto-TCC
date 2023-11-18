@@ -1,6 +1,6 @@
 const connection = require('../../config/database');
 const mysql = require('mysql2/promise');
-const isSamePassWord = require('../../public/scripts/isSamePassword');
+const comparePassword = require('../../public/scripts/comparePassword');
 
 async function login(user)
 {
@@ -16,10 +16,10 @@ async function login(user)
         }
         const password = queryResults[0].senha;
 
-        const samePassWord = await isSamePassWord(userProvided.password, password);
-        if(samePassWord)
+        const isSamePassWord = await comparePassword(userProvided.password, password);
+        if(isSamePassWord)
         {
-            return {same: samePassWord};
+            return {isSamePassWord: isSamePassWord};
         }
         else
         {
