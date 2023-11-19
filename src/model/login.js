@@ -5,30 +5,24 @@ const comparePassword = require('../../public/scripts/comparePassword');
 async function login(user)
 {
     const userProvided = user;
+    const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', [userProvided.email]);
 
-    try 
+    if(queryResults.length == 0)
     {
-        const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', [userProvided.email]);
+        throw new Error('Email ou Senha Incorretos!');
+    }
+    
+    const password = queryResults[0].senha;
 
-        if(queryResults.length == 0)
-        {
-            return new Error('Email ou Senha Incorretos!');
-        }
-        const password = queryResults[0].senha;
-
-        const isSamePassWord = await comparePassword(userProvided.password, password);
-        if(isSamePassWord)
-        {
-            return {isSamePassWord: isSamePassWord};
-        }
-        else
-        {
-            return new Error('Email ou Senha Incorretos!');
-        }
-    } 
-    catch (error) 
+    const isSamePassWord = await comparePassword(userProvided.password, password);
+    if(isSamePassWord)
     {
-        return {erro: error.message};
+        console.log(isSamePassWord);
+        return {isSamePassWord: isSamePassWord};
+    }
+    else
+    {
+        throw new Error('Email ou Senha Incorretos!');
     }
 }
 

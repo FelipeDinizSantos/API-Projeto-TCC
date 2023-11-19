@@ -16,6 +16,8 @@ router.post('/', async(req, res) =>
     try 
     {
         const result = await login(user);
+        console.log(result);
+
         if(result.isSamePassWord === true)
         {
             const token = jwt.sign({email}, ourSecret, { expiresIn: '1d' });

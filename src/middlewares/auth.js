@@ -1,5 +1,7 @@
-const connection = require('../../config/database');
 const mysql = require('mysql2/promise');
+const connection = require('../../config/database');
+
+// TOKEN
 require('dotenv').config();
 const ourSecret = process.env.JWT_TOKEN;
 const jwt = require('jsonwebtoken');
@@ -17,7 +19,9 @@ async function verifyUser(email, res)
         }
         return queryResults[0];
 
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         res.status(500).json({ error: 'Erro Interno, por favor, tente novamente!'});
     }
 }
@@ -25,6 +29,7 @@ async function verifyUser(email, res)
 async function WithAuth(req, res, next)
 {
     const token = req.headers['x-acess-token'];
+
     if(!token)
     {
         res.status(404).json({error: 'Não Autorizado: Nenhum token encontrado!'});
@@ -37,12 +42,13 @@ async function WithAuth(req, res, next)
                 res.status(404).json({error: 'Não Autorizado: Token inválido!'});
             else
             {
-                req.email = decode.email;
-                verifyUser(decode.email, res).then((user) =>
+                verifyUser(decode.email, res)
+                    .then((user)=>
                     {
                         req.user = user;
                         next();
-                    }).catch((error)=>
+                    })
+                    .catch((error)=>
                     {
                         res.status(404).json({error: error.message});
                     })
