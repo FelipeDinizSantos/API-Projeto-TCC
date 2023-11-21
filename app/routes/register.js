@@ -1,6 +1,6 @@
 const express = require('express');
 const registerUser = require('../model/register');
-const User = require('../model/user');
+const userSchema = require('../model/user');
 const router = express.Router();
 
 router.post('/', async (req, res)=>
@@ -8,7 +8,7 @@ router.post('/', async (req, res)=>
     try 
     {
         const {name, email, password} = req.body;
-        const user = new User(name, email, password);
+        const user = new userSchema(name, email, password);
         const results = await registerUser(user);
         res.status(200).json({ resultado: results });
     } 

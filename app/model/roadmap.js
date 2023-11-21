@@ -1,15 +1,12 @@
 class Roadmap
 {
-    constructor(id, title, description, authorID, categoryID, tags, creationDate, editionDate)
+    constructor(title, description, authorID, categoryID, tags)
     {
-        this.id = id;
         this.title = title;
         this.description = description;
         this.authorID = authorID;
         this.categoryID = categoryID;
         this.tags = tags;
-        this.creationDate = creationDate;
-        this.editionDate = editionDate;
     }
 }
 

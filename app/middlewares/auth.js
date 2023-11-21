@@ -28,7 +28,7 @@ async function verifyUser(email, res)
 
 async function WithAuth(req, res, next)
 {
-    const token = req.headers['x-acess-token'];
+    const token = req.headers['x-access-token'];
 
     if(!token)
     {

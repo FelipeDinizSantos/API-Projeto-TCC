@@ -5,7 +5,9 @@ const comparePassword = require('../../public/scripts/comparePassword');
 async function login(user)
 {
     const userProvided = user;
-    const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', [userProvided.email]);
+    const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', 
+        [userProvided.email]
+    );
 
     if(queryResults.length == 0)
     {
@@ -17,7 +19,6 @@ async function login(user)
     const isSamePassWord = await comparePassword(userProvided.password, password);
     if(isSamePassWord)
     {
-        console.log(isSamePassWord);
         return {isSamePassWord: isSamePassWord};
     }
     else

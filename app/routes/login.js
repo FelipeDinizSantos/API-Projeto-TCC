@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../model/user');
+const userSchema = require('../model/user');
 const login = require('../model/login');
 const router = express.Router();
 
@@ -11,12 +11,11 @@ const ourSecret = process.env.JWT_TOKEN;
 router.post('/', async(req, res) =>
 {
     const {name, email, password} = req.body;
-    const user = new User(name, email, password);
+    const user = new userSchema(name, email, password);
      
     try 
     {
         const result = await login(user);
-        console.log(result);
 
         if(result.isSamePassWord === true)
         {
