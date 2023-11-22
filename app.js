@@ -5,8 +5,8 @@ const app = express();
 const registerRouter = require('./app/routes/register');
 const loginRouter = require('./app/routes/login');
 const rootRouter = require('./app/routes/index');
-const roadmapRouter = require('./app/routes/roadmap')
-const findRoadmapRouter = require('./app/routes/findRoadmap.js');
+const roadmapRouter = require('./app/routes/createRoadmap')
+const findRoadmapRouter = require('./app/routes/findRoadmap');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

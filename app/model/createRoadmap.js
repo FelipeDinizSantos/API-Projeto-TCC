@@ -1,4 +1,3 @@
-const mysql = require('mysql2/promise');
 const connection = require('../../config/database');
 
 async function createRoadmap(roadmap)

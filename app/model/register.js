@@ -1,4 +1,3 @@
-const mysql = require('mysql2/promise');
 const getHashedPassword = require('../../public/scripts/getHashedPassword');
 const connection = require('../../config/database');
 

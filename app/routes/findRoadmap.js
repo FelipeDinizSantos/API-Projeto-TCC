@@ -6,9 +6,9 @@ router.get('/', async(req, res) =>
 {       
     try 
     {
-        const title = req.query.title.toString();
-        const roadmap = await findRoadmap(title);
-        res.status(200).json({roadmap: roadmap});
+        const title = req.query.search.toString();
+        const result = await findRoadmap(title);
+        res.status(200).json(result);
 
     } catch (error) 
     {

@@ -1,5 +1,4 @@
 const connection = require('../../config/database');
-const mysql = require('mysql2/promise');
 const comparePassword = require('../../public/scripts/comparePassword');
 
 async function login(user)
