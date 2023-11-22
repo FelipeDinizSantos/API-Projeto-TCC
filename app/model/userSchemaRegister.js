@@ -1,4 +1,4 @@
-class User 
+class UserSchemaRegister 
 {
     constructor(name, email, password)
     {
@@ -8,4 +8,4 @@ class User
     }
 }
 
-module.exports = User;
+module.exports = UserSchemaRegister;
