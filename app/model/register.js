@@ -7,13 +7,13 @@ async function registerUser(newUser) {
     let hashedPassword = await getHashedPassword(user.password);
     user.password = hashedPassword;
 
-    const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', 
+    const [queryResults] = await connection.execute('SELECT * FROM tb_usuario WHERE tb_usuario.email = ?', 
         [user.email]
     );
 
     if(queryResults.length == 0)
     {
-        await connection.query('INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)', 
+        await connection.query('INSERT INTO tb_usuario (nome, email, senha) VALUES (?,?,?)', 
             [user.name, user.email, user.password]
         );
         return {resultado: 'Registro Realizado!'};

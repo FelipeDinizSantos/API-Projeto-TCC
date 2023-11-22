@@ -29,7 +29,6 @@ router.get('/findRoadmap', async(req, res) =>
         const title = req.query.search.toString();
         const result = await findRoadmap(title);
         res.status(200).json(result);
-
     } 
     catch (error) 
     {

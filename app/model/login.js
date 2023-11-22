@@ -4,7 +4,7 @@ const comparePassword = require('../../public/scripts/comparePassword');
 async function login(user)
 {
     const userProvided = user;
-    const [queryResults] = await connection.execute('SELECT * FROM usuario WHERE usuario.email = ?', 
+    const [queryResults] = await connection.execute('SELECT * FROM tb_usuario WHERE tb_usuario.email = ?', 
         [userProvided.email]
     );
 

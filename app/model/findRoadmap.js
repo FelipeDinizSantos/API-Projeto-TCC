@@ -3,7 +3,7 @@ const roadmapSchema = require('./roadmapSchema');
 
 async function findRoadmap(title)
 {
-    const [queryResults] = await connection.execute('SELECT * FROM roadmaps WHERE roadmaps.titulo LIKE ?', 
+    const [queryResults] = await connection.execute('SELECT * FROM tb_roadmap WHERE tb_roadmap.titulo LIKE ?', 
         [title+'%']
     );  
     
