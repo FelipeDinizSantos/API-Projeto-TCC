@@ -1,4 +1,4 @@
-class Roadmap
+class RoadmapSchema
 {
     constructor(title, description, authorID, categoryID, tags)
     {
@@ -10,4 +10,4 @@ class Roadmap
     }
 }
 
-module.exports = Roadmap;
+module.exports = RoadmapSchema;
