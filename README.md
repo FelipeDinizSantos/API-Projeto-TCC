@@ -1,6 +1,6 @@
 # API do Hub de Roteiros Multidisciplinares
 
-Bem-vindo à API do Hub de Roteiros Multidisciplinares, uma parte essencial do projeto inovador desenvolvido como Trabalho de Conclusão de Curso (TCC) em Analise e Desenvolvimento de Sistemas. Esta API segue a arquitetura MVC para garantir uma estrutura organizada e escalável.
+Bem-vindo à API do Hub de Roteiros Multidisciplinares, uma parte essencial do projeto desenvolvido como Trabalho de Conclusão de Curso (TCC) em Analise e Desenvolvimento de Sistemas. Esta API segue a arquitetura MVC para garantir uma estrutura organizada e escalável.
 
 ## Estrutura do Projeto
 
